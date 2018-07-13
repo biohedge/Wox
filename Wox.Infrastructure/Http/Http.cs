@@ -34,7 +34,9 @@ namespace Wox.Infrastructure.Http
             }
             else
             {
-                return WebRequest.GetSystemWebProxy();
+                var systemProxy = WebRequest.GetSystemWebProxy();
+                systemProxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                return systemProxy;
             }
         }
 
